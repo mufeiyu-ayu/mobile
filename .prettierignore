@@ -1,0 +1,11 @@
+# 忽略检查外部文件
+.nuxt/
+node_modules/
+/assets
+.vscode
+.idea
+dist
+public
+pnpm-lock.yaml
+
+
