@@ -6,7 +6,6 @@
       <swier-header />
       <!--      video list-->
       <main-content />
-      <setting />
     </NuxtLayout>
   </div>
 </template>

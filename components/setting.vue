@@ -1,8 +1,12 @@
 <script lang="ts" setup>
+import { headerHeightState } from '~/composables/states'
 
 const theme = ref('light')
 const themeICON = ref('teenyicons:moon-outline')
 const vantTheme = changeThemeState()
+const headerBg = headerBgState()
+const scrollPosition = ref(0)
+const showToHeader = ref(false)
 onMounted(() => {
   theme.value = localStorage.getItem('theme') || 'light'
   applyTheme()
@@ -12,8 +16,16 @@ onMounted(() => {
 const toggleTheme = () => {
   vantTheme.value = theme.value = theme.value === 'light' ? 'dark' : 'light'
   themeICON.value = theme.value === 'light' ? 'teenyicons:moon-outline' : 'teenyicons:sun-outline'
+  headerBg.value = theme.value === 'light' ? '#fff' : '#141414cc'
   localStorage.setItem('theme', theme.value)
   applyTheme()
+}
+
+/* @description 显示隐藏顶部 */
+const handleScroll = () => {
+  scrollPosition.value = window.scrollY || document.documentElement.scrollTop
+
+  showToHeader.value = scrollPosition.value > 500
 }
 const applyTheme = () => {
   if (theme.value === 'dark') {
@@ -22,6 +34,16 @@ const applyTheme = () => {
     document.documentElement.classList.remove('dark')
   }
 }
+
+const handleToHeader = () => {
+  window.scrollTo({
+    top: 0,
+    behavior: 'smooth'
+  })
+}
+onMounted(() => {
+  window.addEventListener('scroll', handleScroll)
+})
 </script>
 
 <template>
@@ -34,7 +56,7 @@ const applyTheme = () => {
       <Icon size="15" :name="themeICON" />
       <span>主题</span>
     </div>
-    <div class="theme-btn">
+    <div v-if="showToHeader" class="theme-btn" @click="handleToHeader">
       <Icon size="15" name="mingcute:triangle-fill" />
       <span>顶部</span>
     </div>
