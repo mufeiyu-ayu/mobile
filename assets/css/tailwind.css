@@ -3,8 +3,21 @@
 @tailwind utilities;
 
 @layer components {
-  /* @description index 主题 btn */
-  .theme-btn {
-    @apply w-[40px] h-[40px] bg-[#fff] flex flex-col justify-center items-center mt-[10px] rounded-lg  shadow-[0_0_3px__#0003];
-  }
+    /* @description index 主题 btn */
+    .theme-btn {
+        @apply w-[40px] h-[40px] bg-[#fff] flex flex-col justify-center items-center mt-[10px] rounded-lg  shadow-[0_0_3px__#0003];
+    }
+}
+
+
+/* @description 全局隐藏滚动条 */
+@layer utilities {
+    .hide-scrollbar {
+        -ms-overflow-style: none; /* IE and Edge */
+        scrollbar-width: none; /* Firefox */
+    }
+
+    .hide-scrollbar::-webkit-scrollbar {
+        display: none; /* Chrome, Safari, and Opera */
+    }
 }

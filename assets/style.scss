@@ -1,3 +1,13 @@
+* {
+  outline: none;
+  margin: 0;
+  padding: 0;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 50ms linear, background 50ms linear;
+
+}
+
+
 span {
   font-size: 12px;
 }
@@ -5,5 +15,14 @@ span {
 ::placeholder {
   color: #3b3b3b !important;
 
+}
+
+span {
+  color: #000;
+}
+
+body {
+  background: url("/images/bg.png") no-repeat;
+  background-size: cover;
 }
 

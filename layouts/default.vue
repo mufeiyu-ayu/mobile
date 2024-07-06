@@ -1,9 +1,7 @@
 <script setup lang="ts">
-import { headerBgState } from '~/composables/states'
-
 const initHeight = headerHeightState()
 const theme = changeThemeState()
-
+const dataInfoBol = ref(false)
 const headerBg = headerBgState()
 const scrollPosition = ref(0)
 const iconColor = computed(() => {
@@ -24,15 +22,29 @@ const handleScroll = () => {
   }
 }
 
+/* @description 监听页面点击 */
+const handleClick = (e: Event) => {
+  const elementType = (e.target as HTMLElement)!.tagName
+  if (elementType !== 'IMG') {
+    dataInfoBol.value = false
+  }
+}
+
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
+  window.addEventListener('click', handleClick)
+})
+
+onUnmounted(() => {
+  window.removeEventListener('scroll', handleScroll)
+  window.removeEventListener('click', handleClick)
 })
 </script>
 
 <template>
   <div>
     <div class="theme1">
-      <a href="#" class="h-1/2 w-1/2">
+      <a href="/" class="h-1/2 w-1/2">
         <img class="w-auto h-full" src="/images/logo_text.png" alt="Bangumi Online" />
       </a>
       <div class="flex w-1/2 items-center">
@@ -52,12 +64,49 @@ onMounted(() => {
           </a>
         </div>
         <div class="mx-[8px] relative">
-          <a href="" class="block text-center text-[#61666d]">
-            <img class="w-[35px] rounded-full" src="/images/login_right.webp" alt="" />
+          <a class="block text-center text-[#61666d]" @click="dataInfoBol = !dataInfoBol">
+            <img
+              class="w-[35px] rounded-full"
+              src="https://bangumi.online/avatar/ytjhkkjhtyj.webp?t=1720243258029"
+              alt=""
+            />
           </a>
+          <div v-if="dataInfoBol" class="absolute min-w-[120px] top-[35px] right-0 pt-[18px] ml-[-100%]">
+            <ul
+              class="bg-[#fff] rounded-md shadow-[0_12px_32px_#0000001a,0_2px_6px_#00000014] overflow-hidden z-[9999999]"
+            >
+              <li
+                class="flex text-[#ff7a51] dark:bg-dark-user border-b dark:border-dark-userB border-[#d0d7de] w-[120px]"
+              >
+                <div class="flex items-center ml-[10px]">
+                  <Icon size="20" name="majesticons:user" />
+                </div>
+
+                <p class="block text-[12px] p-[10px] truncate line-clamp-1">zhaoluxihuanxijiao</p>
+              </li>
+              <li
+                class="flex text-[#ff7a51] dark:bg-dark-user justify-between border-b border-[#d0d7de] dark:border-dark-userB w-[120px]"
+                @click="$router.push('/mine')"
+              >
+                <div class="flex items-center ml-[10px]">
+                  <Icon size="20" name="fa6-solid:message" />
+                </div>
+                <p class="block text-[12px] text-right p-[10px] truncate line-clamp-1">个人资料</p>
+              </li>
+              <li
+                class="flex text-[#ff7a51] dark:bg-dark-user justify-between items-center border-b border-[#d0d7de dark:border-dark-userB w-[120px]"
+              >
+                <div class="flex items-center ml-[10px]">
+                  <Icon size="20" name="uiw:backward" />
+                </div>
+                <p class="block text-[12px] text-right p-[10px] truncate line-clamp-1">登出</p>
+              </li>
+            </ul>
+          </div>
         </div>
       </div>
     </div>
+
     <slot />
     <setting />
   </div>
@@ -88,5 +137,9 @@ img {
 .iconify {
   color: v-bind(iconColor);
   font-weight: 800;
+}
+
+.aa {
+  position: absolute !important;
 }
 </style>
