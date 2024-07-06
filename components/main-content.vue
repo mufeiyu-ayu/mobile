@@ -67,7 +67,7 @@ const testinfo = [
       </span>
       <div class="flex items-center mr-[6px]">
         <a
-          href="#"
+          href="/schudle"
           class="text-sm border-l-1 border-[1px] border-[#ff7a5e] dark:text-dark-white1 text-[#ff7a5e] rounded h-[22px] leading-[22px] ml-[15px] px-[15px] transition-all duration-200"
         >
           <span class="text-[#ff7a5e]">新番时间表</span>

@@ -26,3 +26,12 @@ body {
   background-size: cover;
 }
 
+em, i {
+  font-style: normal;
+}
+
+img {
+  display: block;
+  width: 100%;
+  -webkit-user-drag: none;
+}
