@@ -71,11 +71,22 @@ const showNext = () => {
               <div>
                 <a href="" class="flex pt-[20px] relative">
                   <div class="content-movie">
-                    <img
-                      class="bottom-0 top-0 my-auto mx-0 absolute"
-                      src="https://cover.bangumi.online/season/agmOy25X7jFjZgen.webp?v=1659975719175"
-                      alt=""
-                    />
+                    <!--                    <img-->
+                    <!--                      class="bottom-0 top-0 my-auto mx-0 absolute"-->
+                    <!--                      src="https://cover.bangumi.online/season/agmOy25X7jFjZgen.webp?v=1659975719175"-->
+                    <!--                      alt=""-->
+                    <!--                    />-->
+                    <div>
+                      <van-image
+                        width="100%"
+                        height="100%"
+                        src="https://cover.bangumi.online/season/agmOy25X7jFjZgen.webp?v=1659975719175"
+                      >
+                        <template #error>
+                          <span>图片加载失败</span>
+                        </template>
+                      </van-image>
+                    </div>
                   </div>
                   <div class="flex flex-col justify-between py-[2px] px-0 whitespace-normal">
                     <p class="w-[180px] text-sm line-clamp-1 dark:text-dark-white2">

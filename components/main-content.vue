@@ -80,7 +80,11 @@ const testinfo = [
         <van-grid-item v-for="item in testinfo">
           <a href="" class="block dark:bg-dark-bg1 bg-[#fff] shadow-md rounded">
             <div class="rounded-t rounded-tr-4 overflow-hidden relative">
-              <img :src="item.imgUrl" alt="" />
+              <van-image v-lazy="item.imgUrl" width="100%" height="97" :src="item.imgUrl">
+                <template #error>
+                  <span>图片加载失败</span>
+                </template>
+              </van-image>
             </div>
             <div class="flex items-center space-between px-[8px] py-[4px]">
               <span class="text-sm dark:text-dark-white1 leading-[1.2em] truncate line-clamp-1 whitespace-normal">

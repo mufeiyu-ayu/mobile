@@ -52,7 +52,7 @@ const cartoon = [
       ' 高校生兼ラノベ作家の和泉正宗には、引きこもりの妹がいる。和泉紗霧。一年前に妹になった彼女は、全く部屋から出てこない。そんなある日、衝撃の事実が正宗を襲う。\n' +
       '                彼の小説のイラストを描いてくれているイラストレーター『エロマンガ先生』、その正体が、なんと妹の紗霧だったのだ！\n' +
       '                一つ屋根の下でずっと引きこもっている可愛い妹が、いかがわしいPNで、えっちなイラストを描いていたなんて!?',
-    imgUrl: 'https://cover.bangumi.online/season/r0KbY0GVrBSxx5p6.webp?t=1673926151340',
+    imgUrl: 'https://cover.bangumi.online/season/r0Kbss',
     movie: false
   },
   {
@@ -135,13 +135,18 @@ const getSeason = computed(() => {
           </ul>
         </div>
       </div>
-      <div class="h-[0.1px] mx-auto w-[97vw] mt-[35px] dark:bg-dark-border bg-[#333]" />
+      <div class="h-[0.9px] mx-auto w-[97vw] mt-[35px] dark:bg-dark-border bg-[#f1f2f3]" />
     </div>
     <div class="dark:bg-dark-bg1">
       <ul class="grid">
         <li v-for="item in cartoon" class="flex py-[20px] px-[10px]">
           <div class="shrink-0 relative w-[150px]">
-            <img :src="item.imgUrl" alt="" />
+            <!--            <img :src="item.imgUrl" alt="" />-->
+            <van-image v-lazy="item.imgUrl" show-error="图片加载失败" width="100%" height="100%" :src="item.imgUrl">
+              <template #error>
+                <span>图片加载失败</span>
+              </template>
+            </van-image>
           </div>
           <div class="flex flex-col justify-between pl-[15px]">
             <div>
@@ -156,7 +161,7 @@ const getSeason = computed(() => {
               <p class="text-[#61666d] text-[13px] mt-[5px]">{{ item.movie ? '电影' : '' }}</p>
               <p class="text-[#61666d] text-[13px] mt-[5px]">{{ item.play }}</p>
               <p class="w-[100px] mt-[10px]">
-                <van-button color="#ff7a51">立即观看</van-button>
+                <van-button color="#ff7a51" @click="$router.push('/watch')">立即观看</van-button>
               </p>
             </div>
           </div>

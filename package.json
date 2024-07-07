@@ -12,6 +12,8 @@
   "dependencies": {
     "@nuxt/icon": "^1.0.0",
     "@vant/nuxt": "^1.0.5",
+    "artplayer": "^5.1.6",
+    "artplayer-plugin-vtt-thumbnail": "^1.0.1",
     "nuxt": "^3.12.2",
     "vue": "latest"
   },

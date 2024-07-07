@@ -26,7 +26,11 @@ onMounted(() => {
   <div ref="divContainer" class="pb-[32px] h-full dark:bg-dark-bg1">
     <van-swipe :touchable="false" :autoplay="3000" lazy-render>
       <van-swipe-item v-for="image in images" :key="image">
-        <img :src="image">
+        <van-image v-lazy="image" height="100%" :src="image">
+          <template #error>
+            <span>图片加载失败</span>
+          </template>
+        </van-image>
       </van-swipe-item>
       <template #indicator />
     </van-swipe>

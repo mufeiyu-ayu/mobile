@@ -25,7 +25,7 @@ const toggleTheme = () => {
 const handleScroll = () => {
   scrollPosition.value = window.scrollY || document.documentElement.scrollTop
 
-  showToHeader.value = scrollPosition.value > 500
+  showToHeader.value = scrollPosition.value > 300
 }
 const applyTheme = () => {
   if (theme.value === 'dark') {

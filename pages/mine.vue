@@ -69,7 +69,7 @@ const testinfo = [
           <div
             class="bg-no-repeat bg-center bg-cover bg-[url('//static.bangumi.online/img/user_default.png')] rounded-full shadow-[0_0_5px_#0000001a] block h-20 overflow-hidden w-20"
           >
-            <img class="rounded-full" src="https://bangumi.online/avatar/ytjhkkjhtyj.webp?t=1720243258029" />
+            <van-image width="100%" height="100%" round src="/images/th.jpeg" />
           </div>
           <p class="block ml-[20px] text-3xl dark:text-dark-text text-bold w-[200px] truncate line-clamp-1">
             zhaoluxihuanxijiaoadadadadadasdasdsadas
@@ -101,7 +101,8 @@ const testinfo = [
             <van-grid-item v-for="item in testinfo">
               <a href="" class="block dark:bg-dark-bg1 bg-[#fff] rounded">
                 <div class="reactive rounded-t rounded-tr-4 overflow-hidden relative">
-                  <img :src="item.imgUrl" alt="" />
+                  <!--                  <img :src="item.imgUrl" alt="" />-->
+                  <van-image v-lazy="item.imgUrl" width="100%" height="80" :src="item.imgUrl" />
                   <div class="absolute w-full px-[10px] bottom-[5px] flex justify-between">
                     <span style="text-shadow: 0 0 2px rgba(0, 0, 0, 0.5)" class="text-[#fff]">第10话</span>
                     <span class="bg-[#0009] rounded-sm px-[6px] py-[2px] text-[#fff]">01:08</span>

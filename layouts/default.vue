@@ -1,6 +1,9 @@
 <script setup lang="ts">
+import { use } from 'h3'
+
 const initHeight = headerHeightState()
 const theme = changeThemeState()
+const router = useRouter()
 const dataInfoBol = ref(false)
 const headerBg = headerBgState()
 const scrollPosition = ref(0)
@@ -30,6 +33,10 @@ const handleClick = (e: Event) => {
   }
 }
 
+const loginOut = () => {
+  //...
+  router.push('/login')
+}
 onMounted(() => {
   window.addEventListener('scroll', handleScroll)
   window.addEventListener('click', handleClick)
@@ -45,7 +52,12 @@ onUnmounted(() => {
   <div>
     <div class="theme1">
       <a href="/" class="h-1/2 w-1/2">
-        <img class="w-auto h-full" src="/images/logo_text.png" alt="Bangumi Online" />
+        <!--        <img class="w-auto h-full" src="/images/logo_text.png" alt="Bangumi Online" />-->
+        <van-image src="/images/logo_text.png" width="100%" height="100%">
+          <template #error>
+            <span>图片加载失败</span>
+          </template>
+        </van-image>
       </a>
       <div class="flex w-1/2 items-center">
         <div class="relative">
@@ -54,7 +66,7 @@ onUnmounted(() => {
           </a>
         </div>
         <div class="mx-[8px] relative">
-          <a href="" class="block p-[6.5px] text-center text-[#61666d]">
+          <a href="/alert" class="block p-[6.5px] text-center text-[#61666d]">
             <van-icon class="!font-extrabold" :color="iconColor" size="22px" name="envelop-o" />
           </a>
         </div>
@@ -65,11 +77,8 @@ onUnmounted(() => {
         </div>
         <div class="mx-[8px] relative">
           <a class="block text-center text-[#61666d]" @click="dataInfoBol = !dataInfoBol">
-            <img
-              class="w-[35px] rounded-full"
-              src="https://bangumi.online/avatar/ytjhkkjhtyj.webp?t=1720243258029"
-              alt=""
-            />
+            <!--            <img class="w-[35px] rounded-full" src="/images/login_right.webp" alt="" />-->
+            <van-image src="/images/login_right.webp" round width="35px" height="35" />
           </a>
           <div v-if="dataInfoBol" class="absolute min-w-[120px] top-[35px] right-0 pt-[18px] ml-[-100%]">
             <ul
@@ -95,6 +104,7 @@ onUnmounted(() => {
               </li>
               <li
                 class="flex text-[#ff7a51] dark:bg-dark-user justify-between items-center border-b border-[#d0d7de dark:border-dark-userB w-[120px]"
+                @click="loginOut"
               >
                 <div class="flex items-center ml-[10px]">
                   <Icon size="20" name="uiw:backward" />
@@ -109,6 +119,12 @@ onUnmounted(() => {
 
     <slot />
     <setting />
+    <div class="pt-[10px] mb-[10px] dark:bg-dark-bg1">
+      <div class="text-xs text-center">
+        <div class="dark:text-dark-text">意见请回复:support@banggumi.online</div>
+        <div class="dark:text-dark-text">Copyleft ©2024 2024 アニメ新番組 bangumi.online</div>
+      </div>
+    </div>
   </div>
 </template>
 
@@ -129,7 +145,7 @@ img {
   top: 0;
   transition: all 0.3s linear;
   width: 100%;
-  z-index: 9;
+  z-index: 10000;
   box-shadow: 0 2px 4px #00000014;
   background-color: v-bind(headerBg);
 }
