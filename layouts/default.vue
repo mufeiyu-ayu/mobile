@@ -1,12 +1,11 @@
 <script setup lang="ts">
-import { use } from 'h3'
-
 const initHeight = headerHeightState()
 const theme = changeThemeState()
 const router = useRouter()
 const dataInfoBol = ref(false)
 const headerBg = headerBgState()
 const scrollPosition = ref(0)
+const imgSHow = ref(false)
 const iconColor = computed(() => {
   return theme.value === 'dark' ? '#fff' : '#282828'
 })
@@ -15,13 +14,16 @@ const iconColor = computed(() => {
 const handleScroll = () => {
   scrollPosition.value = window.scrollY || document.documentElement.scrollTop
   if (scrollPosition.value > initHeight.value) {
+    console.log(11)
     if (theme.value === 'dark') {
       headerBg.value = '#141414cc'
     } else {
       headerBg.value = '#fffc'
     }
+    imgSHow.value = true
   } else {
     headerBg.value = ''
+    imgSHow.value = false
   }
 }
 
@@ -53,7 +55,7 @@ onUnmounted(() => {
     <div class="theme1">
       <a href="/" class="h-1/2 w-1/2">
         <!--        <img class="w-auto h-full" src="/images/logo_text.png" alt="Bangumi Online" />-->
-        <van-image src="/images/logo_text.png" width="100%" height="100%">
+        <van-image v-show="imgSHow" src="/images/logo_text.png" width="100%" height="100%">
           <template #error>
             <span>图片加载失败</span>
           </template>
