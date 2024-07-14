@@ -54,7 +54,7 @@ const onSubmit = (value: any) => {
 </template>
 
 <style lang="scss" scoped>
-::v-deep .van-button__text {
+:deep(.van-button__text) {
   color: #fff;
 }
 </style>

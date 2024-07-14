@@ -109,7 +109,7 @@ const testinfo = [
 </template>
 
 <style lang="scss" scoped>
-::v-deep .van-grid-item__content {
+:deep(.van-grid-item__content) {
   margin-top: -4px;
   padding-top: 0;
   padding-left: 5.5px;
@@ -120,7 +120,7 @@ const testinfo = [
   align-items: normal;
 }
 
-::v-deep .van-icon-arrow {
+:deep(.van-icon-arrow) {
   transform: translateX(6px);
   font-weight: 600;
 }

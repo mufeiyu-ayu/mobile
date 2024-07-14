@@ -146,7 +146,7 @@ const testinfo = [
   width: 2px;
 }
 
-::v-deep .van-grid-item__content {
+:deep(.van-grid-item__content) {
   padding-top: 0;
 }
 </style>

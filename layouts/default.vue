@@ -21,6 +21,7 @@ const handleScroll = () => {
       headerBg.value = '#fffc'
     }
     imgSHow.value = true
+    1
   } else {
     headerBg.value = ''
     imgSHow.value = false

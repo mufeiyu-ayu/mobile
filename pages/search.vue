@@ -176,7 +176,7 @@ const getSeason = computed(() => {
   --van-search-padding: 0;
 }
 
-::v-deep .van-search {
+:deep(.van-search) {
   border: 1px solid #f1f2f3;
   height: 50.5px;
   border-radius: 6px;
@@ -185,7 +185,7 @@ const getSeason = computed(() => {
   background-color: #fff;
 }
 
-::v-deep .van-search__action {
+:deep(.van-search__action) {
   display: none;
 }
 
@@ -199,25 +199,25 @@ const getSeason = computed(() => {
   color: red;
 }
 
-::v-deep .van-search__field {
+:deep(.van-search__field) {
   height: 100%;
   background-color: #ffffff;
 }
 
-::v-deep .van-field__right-icon {
+:deep(.van-field__right-icon) {
   padding: 0 5px;
 }
 
-::v-deep .van-search__content {
+:deep(.van-search__content) {
   background-color: #fff;
   padding-left: 0;
 }
 
-::v-deep .van-field__control {
+:deep(.van-field__control) {
   font-size: 18px;
 }
 
-::v-deep .van-button {
+:deep(.van-button) {
   position: none;
   width: 100%;
   border-radius: 6px;
@@ -229,12 +229,12 @@ const getSeason = computed(() => {
   white-space: nowrap;
 }
 
-::v-deep .van-button__text {
+:deep(.van-button__text) {
   font-size: 16px;
   color: #fff;
 }
 
-::v-deep .vans-field__left-icon {
+:deep(.vans-field__left-icon) {
   color: red;
   font-size: 14px;
 }

@@ -9,7 +9,7 @@
 
 <script setup lang="ts">
 import VideoInfo from '~/components/video-info.vue'
-import artplayerPluginVttThumbnail from 'artplayer-plugin-vtt-thumbnail'
+// import artplayerPluginVttThumbnail from 'artplayer-plugin-vtt-thumbnail'
 
 const option = reactive({
   url: '/images/video.mp4',

@@ -45,11 +45,11 @@ const message = ref('')
 </template>
 
 <style lang="scss" scoped>
-::v-deep .van-image__img {
+:deep(.van-image__img) {
   border-radius: 4px;
 }
 
-::v-deep .van-cell__value {
+:deep(.van-cell__value) {
   border: 1px solid #c9ccd0;
   border-radius: 4px;
 }
