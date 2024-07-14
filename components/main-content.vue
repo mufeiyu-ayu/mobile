@@ -59,7 +59,7 @@ const testinfo = [
 
 <template>
   <div class="dark:bg-dark-bg1">
-    <div class="flex justify-between items-center px-[6px] mb-[10px]">
+    <div class="flex justify-between items-center px-[6px] mb-[16px]">
       <span
         class="text-2xl dark:text-dark-white1 leading-6 pl-[6px] font-normal border-l-4 border-solid border-[#ff7a5e]"
       >
@@ -68,9 +68,9 @@ const testinfo = [
       <div class="flex items-center mr-[6px]">
         <a
           href="/schudle"
-          class="text-sm border-l-1 border-[1px] border-[#ff7a5e] dark:text-dark-white1 text-[#ff7a5e] rounded h-[22px] leading-[22px] ml-[15px] px-[15px] transition-all duration-200"
+          class="flex items-center text-sm border-l-1 border-[1px] border-[#ff7a5e] dark:text-dark-white1 text-[#ff7a5e] rounded h-[22px] leading-[22px] px-[15px] transition-all duration-200"
         >
-          <span class="text-[#ff7a5e]">新番时间表</span>
+          <span class="text-[#ff7a5e]">新番時間表</span>
           <van-icon name="arrow" />
         </a>
       </div>
@@ -80,20 +80,26 @@ const testinfo = [
         <van-grid-item v-for="item in testinfo">
           <a href="" class="block dark:bg-dark-bg1 bg-[#fff] shadow-md rounded">
             <div class="rounded-t rounded-tr-4 overflow-hidden relative">
-              <van-image v-lazy="item.imgUrl" width="100%" height="97" :src="item.imgUrl">
-                <template #error>
-                  <span>图片加载失败</span>
-                </template>
-              </van-image>
+              <van-image v-lazy="item.imgUrl" width="100%" height="97" :src="item.imgUrl" />
+              <div class="w-full absolute bottom-[8px] flex justify-between items-center px-[5px]">
+                <div class="flex items-center">
+                  <Icon size="12" name="f7:arrowtriangle-right-square" style="color: white" />
+                  <span class="text-[10px] text-[#fff]">第十三话</span>
+                </div>
+                <div>
+                  <span class="text-[#fff] rounded-[4px] bg-[#f2b509] py-[1px] px-[4px] text-[10px]">特别篇</span>
+                </div>
+              </div>
             </div>
-            <div class="flex items-center space-between px-[8px] py-[4px]">
-              <span class="text-sm dark:text-dark-white1 leading-[1.2em] truncate line-clamp-1 whitespace-normal">
+            <div class="flex items-center space-between px-[8px] py-[2px]">
+              <span class="dark:text-dark-white1 leading-[1.2em] truncate line-clamp-1 whitespace-normal">
                 {{ item.title }}
               </span>
-              <span class="flex items-center ml-[0.5em] flex-shrink-0">
+              <div class="flex-1" />
+              <div class="flex items-center ml-[0.5em] flex-shrink-0">
                 <Icon size="12" name="mdi:eye" />
                 <span class="text-xs dark:text-dark-white1 leading-[1.2em]">{{ item.play }}</span>
-              </span>
+              </div>
             </div>
           </a>
         </van-grid-item>
@@ -104,7 +110,14 @@ const testinfo = [
 
 <style lang="scss" scoped>
 ::v-deep .van-grid-item__content {
+  margin-top: -4px;
   padding-top: 0;
+  padding-left: 5.5px;
+  padding-right: 5.5px;
+}
+
+:deep(.van-grid-item__content--center) {
+  align-items: normal;
 }
 
 ::v-deep .van-icon-arrow {
